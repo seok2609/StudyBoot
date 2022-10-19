@@ -11,7 +11,7 @@ public class Pager {
 	private Long startRow;
 	
 	public void makeStartRow() {
-		this.startRow = (this.getPage()-1)*this.perPage+1;
+		this.startRow = (this.getPage()-1)*this.perPage;
 	}
 	
 	//페이지가 null이거나 1보다 작으면 1페이지로 이동

@@ -36,10 +36,10 @@ public class HomeController {
 		log.trace("Trace Message");
 		
 		Pager pager = new Pager();
-		List<QnaVO> ar = qnaMapper.getQnaList(pager);
-		
-		
-		log.info("List : {}  size {}", ar, ar.size());
+//		List<QnaVO> ar = qnaMapper.getQnaList(pager);
+//		
+//		
+//		log.info("List : {}  size {}", ar, ar.size());
 	
 		
 		return "/index";

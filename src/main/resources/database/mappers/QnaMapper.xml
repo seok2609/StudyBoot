@@ -6,12 +6,16 @@
 <mapper namespace="com.js.home.board.qna.QnaMapper">
 
 	<select id="getQnaList" resultType="QnaVO" parameterType="Pager">
-<!-- 		SELECT * FROM QNA ORDER BY NUM DESC -->
+ 		SELECT * FROM QNA ORDER BY NUM DESC LIMIT #{startRow}, #{perPage}
 <!-- 		SELECT * FROM QNA ORDER BY NUM DESC LIMIT #{page}, 10 -->
-		 SELECT * FROM QNA ORDER BY NUM DESC LIMIT #{startRow}, #{perPage}
+		<!--  SELECT * FROM QNA ORDER BY NUM DESC LIMIT #{startRow}, #{perPage} -->
 	</select>
 	
+	<!-- <select id="getQnaDetail" resultType="QnaVO">
+		SELECT * FROM QNA WHERE NUM = #{num}
+	</select> -->
+	
 	<insert id="setQnaAdd" parameterType="QnaVO">
-		INSERT INTO QNA VALUES (null, #{writer}, #{title}, #{contents}, 0, SYSDATE(), 0, 0, 0)
+		INSERT INTO QNA VALUES (#{num}, #{writer}, #{title}, #{contents}, 0, SYSDATE(), 0, 0, 0)
 	</insert>
 </mapper>

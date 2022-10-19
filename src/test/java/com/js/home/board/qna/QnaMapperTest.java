@@ -4,7 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +21,28 @@ class QnaMapperTest {
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
-	@BeforeAll
-	void befoClass() throws Exception{
-		log.info("전체 Test 실행 전!");
-	}
+	//전체 test 실행 전
+//	@BeforeAll
+//	static void beforeAll(){
+//		System.out.println("전체 테스트 실행 전");
+//	}
+//	
+//	@AfterAll
+//	static void afterAll(){
+//		System.out.println("전체 테스트 실행 후 ");
+//	}
+//	
+//	//각각의 testcase 메서드 실행 전
+//	@BeforeEach
+//	static void beforeEach(){
+//		System.out.println("전체 테스트 실행 후 ");
+//	}
+//	
+//	@AfterEach
+//	static void afterEach(){
+//		System.out.println("전체 테스트 실행 후 ");
+//	}
+
 	
 	@Autowired
 	private QnaMapper qnaMapper;
