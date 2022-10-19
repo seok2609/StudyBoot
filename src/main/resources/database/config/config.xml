@@ -9,8 +9,14 @@
 		<!-- <typeAlias type="풀패키지명.클래스명" alias="별칭(클래스명)"/> -->
 		
 		<typeAlias type="com.js.home.board.qna.QnaVO" alias="QnaVO"/>
+		<typeAlias type="com.js.home.board.qna.QnaFileVO" alias="QnaFileVO"/>
+		
+				
 		<typeAlias type="com.js.home.util.Pager" alias="Pager"/>
 		
+		<typeAlias type="java.util.List" alias="List"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.lang.String" alias="String"/>
 		
 	</typeAliases>
 </configuration>				  

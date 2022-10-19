@@ -13,7 +13,9 @@ public interface QnaMapper {
 	
 	public List<QnaVO> getQnaList(Pager pager) throws Exception;
 	
-//	public QnaVO getQnaDetail(QnaVO qnaVO) throws Exception;
+	public QnaVO getQnaDetail(QnaVO qnaVO) throws Exception;
 	
 	public int setQnaAdd(QnaVO qnaVO) throws Exception;
+	
+	public int setQnaFileAdd(QnaFileVO qnaFileVO) throws Exception;
 }

@@ -39,16 +39,16 @@
 		</thead>
 		
 			<tbody>
-				<c:forEach items="${requestScope.list}" var="dto">
+				<c:forEach items="${requestScope.list}" var="qnaVO">
 					
 					<tr>
-						<td>${dto.num}</td>
-						<td>${dto.writer}</td>
-						<%-- <td><a href="./detail?num=${dto.num}"></a>${dto.title}</td> --%>
-						<td>${dto.title}</td>
-				 		<td>${dto.contents}</td>
-						<td>${dto.hits}</td>
-						<td>${dto.regDate}</td>
+						<td>${qnaVO.num}</td>
+						<td>${qnaVO.writer}</td>
+						<td><a href="./detail?num=${qnaVO.num}">${qnaVO.title}</a></td>
+						<!-- <td>${dto.title}</td> -->
+				 		<td>${qnaVO.contents}</td>
+						<td>${qnaVO.hits}</td>
+						<td>${qnaVO.regDate}</td>
 					</tr>
 					
 				</c:forEach>
