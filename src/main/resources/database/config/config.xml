@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+				  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+				  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+				  
+
+<configuration>
+	<typeAliases>
+		<!-- <typeAlias type="풀패키지명.클래스명" alias="별칭(클래스명)"/> -->
+		
+		<typeAlias type="com.js.home.board.qna.QnaVO" alias="QnaVO"/>
+		<typeAlias type="com.js.home.util.Pager" alias="Pager"/>
+		
+		
+	</typeAliases>
+</configuration>				  
