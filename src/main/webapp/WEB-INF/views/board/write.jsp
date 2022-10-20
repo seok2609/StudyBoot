@@ -35,8 +35,8 @@
 			
 			<div class="mb-3">
 			  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-			  <!-- <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용을 입력하세요."></textarea> -->
-			  <input type="text" name="contents" placeholder="내용을 입력하세요." id="contents">
+			  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용을 입력하세요."></textarea>
+			  <!-- <input type="text" name="contents" placeholder="내용을 입력하세요." id="contents"> -->
 			</div>
 			
 			<div class="mb-3">

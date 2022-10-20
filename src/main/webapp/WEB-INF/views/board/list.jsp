@@ -19,7 +19,9 @@
 	
 	<div>
 		<!-- <button class="btn btn-primary">Write</button> -->
-		<a href="./add" class="btn btn-secondary">write</a>
+		<div style="display: inline-block; margin: 0 5px;  float: right;">
+			<a href="./add" class="btn btn-secondary">write</a>
+		</div>
 <!-- 		<button type="submit" class="btn btn-secondary">write</button> -->
 	</div>
 	

@@ -42,7 +42,9 @@
             <div class="col">아니 왜 안나와
                 <c:forEach items="${qnaVO.qnaFileVOs}" var="qnaFileVO">
                     <!-- <a href="../../../static/upload/qna/${fileVO.fileName}">${fileVO.oriName}</a> -->
-                    <img src="./result/upload/qna/${qnaFileVO.fileName}" width="300px" height="300px">
+                    <!-- <img src="./result/upload/qna/${qnaFileVO.fileName}" width="300px" height="300px"> -->
+                    <img src="/file/qna/${qnaFileVO.fileName}" alt="">
+                    <a href="/file/qna/${qnaFileVO.fileName}"></a>
                 </c:forEach>
             </div>
         </div>
