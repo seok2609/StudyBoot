@@ -22,9 +22,11 @@ class TrasferTest {
 	
 	@Test
 	void test() {
-		
+		transport.airPlane();
+		transport.getTaxi();
 		transport.takeBus();
 		transport.takeSubway();
+		
 	}
 
 }

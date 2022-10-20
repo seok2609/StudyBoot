@@ -14,13 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 @Aspect
 public class Card {
 	
-	@Before("excution(* com.js.home.aop.test.Transport.airPlane())")
+	@Before("execution(* com.js.home.aop.test.Transport.airPlane())")
 		public void before() {
 			log.info("------------before-----------");
 		}
 	
 	
-	@After("excution(* com.js.home.aop.test.Transport.airPlane())")
+	@After("execution(* com.js.home.aop.test.Transport.get*())")
 		public void after() {
 			log.info("------------after-----------");
 		
