@@ -20,7 +20,7 @@ class TrasferTest {
 	@Autowired
 	private Card card;
 	
-	@Test
+	//@Test
 	void test() {
 		transport.airPlane();
 		transport.getTaxi();
