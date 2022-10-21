@@ -54,10 +54,6 @@ public class QnaService {
 		
 		for(MultipartFile mf : qnaVO.getFiles()) {
 			
-			if(mf.isEmpty()) {
-				log.info("========================Exception 발생 ==========================");
-				throw new Exception();
-			}
 			
 			if(!mf.isEmpty()) {
 				log.info("FileName : {} ", mf.getOriginalFilename());
