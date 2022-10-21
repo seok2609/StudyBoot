@@ -43,8 +43,8 @@
                 <c:forEach items="${qnaVO.qnaFileVOs}" var="qnaFileVO">
                     <!-- <a href="../../../static/upload/qna/${fileVO.fileName}">${fileVO.oriName}</a> -->
                     <!-- <img src="./result/upload/qna/${qnaFileVO.fileName}" width="300px" height="300px"> -->
-                    <img src="/file/qna/${qnaFileVO.fileName}" alt="">
-                    <a href="/file/qna/${qnaFileVO.fileName}"></a>
+                    <img src="/file/app/upload/${qnaFileVO.fileName}" alt="">
+                    <a href="/file/app/upload/${qnaFileVO.fileName}"></a>
                 </c:forEach>
             </div>
         </div>
