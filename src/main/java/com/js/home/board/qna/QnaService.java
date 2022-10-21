@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.js.home.util.FileManager;
@@ -37,6 +38,8 @@ public class QnaService {
 		return qnaMapper.getQnaDetail(qnaVO);
 	}
 	
+	
+	@Transactional(rollbackFor = Exception.class)	//이 setQnaAdd를 실행하다가 Exception이 발생하면 rollback을 시키는 어노테이션
 	public int setQnaAdd(QnaVO qnaVO) throws Exception{
 		int result = qnaMapper.setQnaAdd(qnaVO);
 		
@@ -50,6 +53,12 @@ public class QnaService {
 		
 		
 		for(MultipartFile mf : qnaVO.getFiles()) {
+			
+			if(mf.isEmpty()) {
+				log.info("========================Exception 발생 ==========================");
+				throw new Exception();
+			}
+			
 			if(!mf.isEmpty()) {
 				log.info("FileName : {} ", mf.getOriginalFilename());
 				String fileName = fileManager.saveFile(mf, path);

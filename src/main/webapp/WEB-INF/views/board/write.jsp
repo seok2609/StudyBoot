@@ -56,6 +56,12 @@
 		</form>
 	</div>
 	
+	<div style="margin-top: 10px;">
+		<button class="btn btn-primary" type="button" onclick="location='./list'">list</button>
+	</div>
+	<div style="display: inline-block; margin: 0 5px;  float: right;">
+		<button class="btn btn-secondary" type="button" onclick="location='/'">홈</button>
+	</div>
 </section>
 <!-- 부트스트랩 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

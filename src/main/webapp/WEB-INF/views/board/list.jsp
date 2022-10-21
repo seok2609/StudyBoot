@@ -18,6 +18,10 @@
 	<img src="../images/naeun.jpg">
 	
 	<div>
+		<button class="btn btn-primary" type="button" onclick="location='/'">홈</button>
+	</div>
+	
+	<div>
 		<!-- <button class="btn btn-primary">Write</button> -->
 		<div style="display: inline-block; margin: 0 5px;  float: right;">
 			<a href="./add" class="btn btn-secondary">write</a>
