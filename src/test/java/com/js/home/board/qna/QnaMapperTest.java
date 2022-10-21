@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,9 @@ import com.js.home.util.Pager;
 class QnaMapperTest {
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@Value("${my.dafault}")
+	private String app;
 	
 	//전체 test 실행 전
 //	@BeforeAll
@@ -62,18 +66,22 @@ class QnaMapperTest {
 	
 	//@Test
 	public void setQnaAddTest() throws Exception{
+		
+		log.info("============{}==========", app);
+		
 		QnaVO qnaVO = new QnaVO();
-		qnaVO.setNum(null);
 		qnaVO.setWriter("js");
 		qnaVO.setTitle("하이");
 		qnaVO.setContents("내용");
 		
-		int result = qnaMapper.setQnaAdd(qnaVO);
+		//int result = qnaMapper.setQnaAdd(qnaVO);
 		
-		log.info("result : " , result);
+//		log.info("result : " , result);
+		
+		assertEquals(1, 1);
 	}
 	
-	@Test
+	//@Test
 	public void setQnaIndexTest() throws Exception{
 		
 		QnaVO qnaVO = new QnaVO();
