@@ -36,6 +36,8 @@ public class HomeController {
 		log.info("message : {} ", message);
 		log.info("default : {} ", app);
 		
+		log.info("====================================");
+		
 //		log.error("Error Message");
 //		log.warn("Warn Message");
 //		log.info("Info Message");
