@@ -10,6 +10,8 @@
 		
 		<typeAlias type="com.js.home.board.qna.QnaVO" alias="QnaVO"/>
 		<typeAlias type="com.js.home.board.qna.QnaFileVO" alias="QnaFileVO"/>
+		<typeAlias type="com.js.home.member.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.js.home.member.RoleVO" alias="RoleVO"/>
 		
 				
 		<typeAlias type="com.js.home.util.Pager" alias="Pager"/>
