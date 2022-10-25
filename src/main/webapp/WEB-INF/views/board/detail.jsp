@@ -44,7 +44,8 @@
                     <!-- <a href="../../../static/upload/qna/${fileVO.fileName}">${fileVO.oriName}</a> -->
                     <!-- <img src="./result/upload/qna/${qnaFileVO.fileName}" width="300px" height="300px"> -->
                     <img src="/file/qna/${qnaFileVO.fileName}" alt="">
-                    <a href="/file/qna/${qnaFileVO.fileName}"></a>
+                    <%-- <a href="/file/qna/${qnaFileVO.fileName}"></a> --%>
+                    <a href="/fileDown/qna?fileNum=${qnaFileVO.fileNum}">${qnaFileVO.oriName}</a>
                 </c:forEach>
             </div>
         </div>

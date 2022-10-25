@@ -48,4 +48,8 @@
 	<insert id="setQnaFileAdd" parameterType="QnaFileVO">
 		INSERT INTO QNAFILES VALUES (NULL, #{num}, #{fileName}, #{oriName})
 	</insert>
+	
+	<select id="getQnaFileDetail" resultType="QnaFileVO">
+		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum}
+	</select>
 </mapper>
