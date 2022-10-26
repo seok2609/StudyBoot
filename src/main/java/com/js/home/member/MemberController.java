@@ -5,10 +5,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -83,6 +83,22 @@ public class MemberController {
 		return "redirect:./login";
 	}
 	
+	@GetMapping(value = "idCheck")
+	@ResponseBody
+	public int getIdCheck(String id) throws Exception{
+		
+		log.info("~~~~~~~~~~~~~~~~~~ID 중복체크 슈우웃~~~~~~~~~~~~~");
+		
+		int result = memberService.getIdCheck(id);
+		
+		if(result == 1) {
+			log.info("삐빅 ! 중복입니다");
+		}else {
+			log.info("통과");
+		}
+		
+		return result;
+	}
 	
 	
 	

@@ -18,4 +18,9 @@ public class MemberService {
 		
 		return memberMapper.setMemberJoin(memberVO);
 	}
+	
+	public int getIdCheck(String id) throws Exception{
+		
+		return memberMapper.getIdCheck(id);
+	}
 }

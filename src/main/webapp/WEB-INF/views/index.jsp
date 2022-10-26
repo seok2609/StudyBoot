@@ -8,9 +8,10 @@
 <title>Insert title here</title>
 <c:import url="./temp/boot.jsp"></c:import>
 <link href="./css/test.css" rel="styleSheet">
+<script defer src="/js/test.js"></script>
 </head>
 <body>
-	<h1>이나은 페이지</h1>
+	<h1>이나은 팬클럽</h1>
 	
 	<c:if test="${empty sessionScope.member}">
 		<a href="./member/login">로그인</a>
@@ -41,5 +42,16 @@
 		<img alt="" src="/file/notice/1111.jpg">
 		<a href="/fileDown/notice?fileNum=31">NoticeDown</a>
 	</div>
+
+	<button id="btn" class="btn btn-primary" type="button">클릭</button>
+
+	<button class="buttons">btn1</button>
+	<button class="buttons">btn2</button>
+	<button class="buttons">btn3</button>
+
+	<div class="test">
+
+	</div>
+
 </body>
 </html>

@@ -9,5 +9,6 @@ public interface MemberMapper {
 	
 	public int setMemberJoin(MemberVO memberVO) throws Exception;
 	
+	public int getIdCheck(String id) throws Exception;
 	
 }
