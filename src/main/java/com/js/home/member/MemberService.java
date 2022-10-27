@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class MemberService {
 	
 	@Autowired
@@ -19,7 +20,7 @@ public class MemberService {
 		return memberMapper.setMemberJoin(memberVO);
 	}
 	
-	public int getIdCheck(MemberVO memberVO) throws Exception{
+	public Integer getIdCheck(MemberVO memberVO) throws Exception{
 		
 		return memberMapper.getIdCheck(memberVO);
 	}

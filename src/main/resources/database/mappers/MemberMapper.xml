@@ -35,11 +35,14 @@
 
 
 	<insert id="setMemberRole" parameterType="MemberVO">
-		INSERT INTO MEMBER_ROLE VALUES (#{id}, 3)
+		<!-- INSERT INTO MEMBER_ROLE VALUES (#{id}, 3) -->
+		INSERT INTO MEMBER_ROLE VALUES (#{id},
+				(SELECT NUM FROM ROLE WHERE ROLENAME = 'MEMBER')
+			)
 	</insert>
 	
 	<select id="getIdCheck" parameterType="MemberVO" resultType="Integer">
-		SELECT COUNT(*) FROM MEMBER WHERE ID = #{id}
+		SELECT COUNT(ID) FROM MEMBER WHERE ID = #{id}
 	</select>
 	
 </mapper>

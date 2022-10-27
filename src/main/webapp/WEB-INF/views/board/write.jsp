@@ -39,14 +39,14 @@
 			  <!-- <input type="text" name="contents" placeholder="내용을 입력하세요." id="contents"> -->
 			</div>
 			
-			<div class="mb-3">
+<!-- 			<div class="mb-3">
 			
 			</div>
 			<div class="mb-3">
 				<button type="button">FileAdd</button>
-			</div>
+			</div> -->
 			
-<!-- 			<div class="mb-3">
+ 			<div class="mb-3">
 			  <label for="formGroupExampleInput" class="form-label">file</label>
 			  <input type="file" name="files">
 			</div>	
@@ -54,7 +54,7 @@
 			<div class="mb-3">
 			  <label for="formGroupExampleInput" class="form-label">file</label>
 			  <input type="file" name="files">
-			</div> -->
+			</div>
 				
 			<div>
 				<button type="submit" class="btn btn-primary">write</button>

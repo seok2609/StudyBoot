@@ -38,9 +38,9 @@
 	
 	<div>
 		<img alt="" src="/file/qna/6fd44e23-2976-49f9-b09c-0075362c35a5_.jpg">
-		<a href="/fileDown/qna?fileNum=23">QnaDown</a>
+		<a href="/fileDown/qna?fileNum=2">QnaDown</a>
 		<img alt="" src="/file/notice/1111.jpg">
-		<a href="/fileDown/notice?fileNum=31">NoticeDown</a>
+		<a href="/fileDown/notice?fileNum=1">NoticeDown</a>
 	</div>
 
 	<button id="btn" class="btn btn-primary" type="button">클릭</button>

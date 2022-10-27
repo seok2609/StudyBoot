@@ -52,4 +52,8 @@
 	<select id="getQnaFileDetail" resultType="QnaFileVO">
 		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum}
 	</select>
+	
+	<delete id="setQnaFileDelete" parameterType="QnaFileVO">
+		DELETE FROM QNAFILES WHERE FILENUM = #{fileNum}
+	</delete>
 </mapper>

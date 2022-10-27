@@ -93,6 +93,14 @@ integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1
 
 	</div>
 
+	<div>
+		<select id="s1">
+		   <option>1</option>
+		   <option>2</option>
+		</select>
+		<button type="button" id="s1Add">Add</button>
+	 </div>
+
 <img src="../images/naeun111.jpg">
 
 

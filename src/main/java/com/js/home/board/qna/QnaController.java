@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -79,5 +80,28 @@ public class QnaController {
 		}
 		
 		return mv;
+	}
+	
+	@GetMapping(value = "update")
+	public ModelAndView setQnaUpdate(QnaVO qnaVO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/update");
+		
+		qnaVO = qnaService.getQnaDetail(qnaVO);
+		
+		mv.addObject("qnaVO", qnaVO);
+		
+		return mv;
+	}
+	
+	@PostMapping(value ="fileDelete")
+	@ResponseBody
+	public int setQnaFileDelete(QnaFileVO qnaFileVO) throws Exception{
+		
+		int result = qnaService.setQnaFileDelete(qnaFileVO);
+		
+		return result;
 	}
 }

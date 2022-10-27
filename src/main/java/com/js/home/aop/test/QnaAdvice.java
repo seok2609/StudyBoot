@@ -41,7 +41,7 @@ public class QnaAdvice {
 		log.info("Kind : {} ", joinPoint.getKind());
 		
 		Object [] objects = joinPoint.getArgs();
-		QnaVO qnaVO = (QnaVO)objects[0];	//다형성 (형변
+		QnaVO qnaVO = (QnaVO)objects[0];	//다형성 (형변환)
 		
 		Object object = joinPoint.proceed();
 		
