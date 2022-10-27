@@ -40,6 +40,13 @@
 			</div>
 			
 			<div class="mb-3">
+			
+			</div>
+			<div class="mb-3">
+				<button type="button">FileAdd</button>
+			</div>
+			
+<!-- 			<div class="mb-3">
 			  <label for="formGroupExampleInput" class="form-label">file</label>
 			  <input type="file" name="files">
 			</div>	
@@ -47,7 +54,7 @@
 			<div class="mb-3">
 			  <label for="formGroupExampleInput" class="form-label">file</label>
 			  <input type="file" name="files">
-			</div>
+			</div> -->
 				
 			<div>
 				<button type="submit" class="btn btn-primary">write</button>
