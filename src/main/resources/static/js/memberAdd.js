@@ -168,5 +168,63 @@ $("#test").click(function(){
         name : name
     }, function(result){
         console.log("Result : " , result);
+
+        // "{키 : 밸류}"
+        //
+        result = JSON.parse(result);
+        console.log("Name : ", result.name);
     });
 });
+
+$("#test2").click(function(){
+    let id = "abcd";
+    $.ajax({
+        type:"GET",
+        url:"idCheck",
+        data:{
+            id:id
+        },
+        success:function(result){
+            console.log("Result : " , reuslt);
+        },
+        error:function(xhr,status,error){
+            console.log("Xhr : ", xhr);
+            console.log("Status : " , status);
+            console.log("Error : " , error);
+
+        }
+    });
+});
+
+$("#test3").click(function(){
+
+    let id = "1234";
+    let name = "iu";
+    let ar = [1,2,3];
+    $.ajax({
+        type:"POST",
+        url:"test",
+        traditional:true,   //배열을 전송할 때 사용, true
+        data:{
+            id:id,
+            name:name,
+            ar:ar
+        },
+        success:function(result){
+            console.log("Result : ", result);
+        }
+    })
+});
+
+let count = 3;
+$("#s1Add").click(function(){
+    // let add = '<option class="abc" id="abc'+count+'">'+count+'</option>'
+    // $("#s1").before(add);
+    // count ++;
+
+    $("#s1Add").remove();
+});
+
+$("#s1").click(function(){
+    $("#s1").empty();   //자식들만 지운다
+}); 

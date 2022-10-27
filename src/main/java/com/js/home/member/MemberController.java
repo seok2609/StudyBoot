@@ -1,5 +1,7 @@
 package com.js.home.member;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -90,6 +92,10 @@ public class MemberController {
 		
 		
 		int result = memberService.getIdCheck(memberVO);
+		
+//		if(result == 0) {
+//			throw new Exception("테스트");
+//		}
 	
 		
 		return result;
@@ -97,11 +103,15 @@ public class MemberController {
 	
 	@PostMapping(value = "test")
 	@ResponseBody
-	public MemberVO setTest(MemberVO memberVO) throws Exception{
+	public MemberVO setTest(MemberVO memberVO, String [] ar) throws Exception{
 		
 		log.info("========================================");
 		log.info("ID : {} ", memberVO.getId());
 		log.info("Name : {}" , memberVO.getName());
+		
+		for(String s : ar) {
+			log.info("ar : {} ", s);
+		}
 		
 		return memberVO;
 	}

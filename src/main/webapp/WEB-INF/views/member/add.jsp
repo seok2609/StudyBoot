@@ -59,6 +59,9 @@ integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1
 	<!-- Post Button -->
 	<div>
 		<button type="button" id="test">Post Test</button>
+		<button type="button" id="test2">Ajax Get Test</button>
+		<button type="button" id="test3">Ajax Post Test</button>
+
 	</div>
 
 	<!-- 약관 TEST -->
