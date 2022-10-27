@@ -85,19 +85,25 @@ public class MemberController {
 	
 	@GetMapping(value = "idCheck")
 	@ResponseBody
-	public int getIdCheck(String id) throws Exception{
+	public int getIdCheck(MemberVO memberVO) throws Exception{
 		
-		log.info("~~~~~~~~~~~~~~~~~~ID 중복체크 슈우웃~~~~~~~~~~~~~");
 		
-		int result = memberService.getIdCheck(id);
 		
-		if(result == 1) {
-			log.info("삐빅 ! 중복입니다");
-		}else {
-			log.info("통과");
-		}
+		int result = memberService.getIdCheck(memberVO);
+	
 		
 		return result;
+	}
+	
+	@PostMapping(value = "test")
+	@ResponseBody
+	public MemberVO setTest(MemberVO memberVO) throws Exception{
+		
+		log.info("========================================");
+		log.info("ID : {} ", memberVO.getId());
+		log.info("Name : {}" , memberVO.getName());
+		
+		return memberVO;
 	}
 	
 	

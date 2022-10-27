@@ -56,6 +56,18 @@ $("#inputID").blur(function(){
     }else{
         $("#idHelp").html("ID는 필수입니다")
     }
+
+    //단 id가 비어있지 않을때
+    $.get("./idCheck?id="+id, function(data){
+        console.log("data : ", data);
+        if(data == '0'){
+            $("#idHelp").html("사용가능한 ID 입니다 .");
+            results[0] = result;
+        }else{
+            $("#idHelp").html("이미 사용중인 ID 입니다. ");
+            results[0] = reuslt;
+        }
+    })
 });
 
 // pw Check
@@ -144,4 +156,17 @@ $("#joinBtn").click(function(){
     // if(c){
     //     $("#addForm").submit();
     // }
+});
+
+$("#test").click(function(){
+
+    let id = "123";
+    let name = "iu";
+
+    $.post("test", {
+        id : id,
+        name : name
+    }, function(result){
+        console.log("Result : " , result);
+    });
 });

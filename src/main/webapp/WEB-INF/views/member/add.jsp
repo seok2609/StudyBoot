@@ -56,6 +56,10 @@ integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1
 		  
 	</form>
 
+	<!-- Post Button -->
+	<div>
+		<button type="button" id="test">Post Test</button>
+	</div>
 
 	<!-- 약관 TEST -->
 	<div>
