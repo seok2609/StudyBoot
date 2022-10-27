@@ -9,10 +9,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"
 >
+<c:import url="../temp/boot.jsp"></c:import>
 </head>
 <body>
     <section class="container-fluid col-lg-10 mt-5">
 	<h1>detail</h1>
+    <h3>제목 : ${qnaVO.title}</h3>
     <table border="1" class="table table-striped col-lg-16">
         <thead class="table-info">
             <tr>
@@ -48,6 +50,10 @@
                     <a href="/fileDown/qna?fileNum=${qnaFileVO.fileNum}">${qnaFileVO.oriName}</a>
                 </c:forEach>
             </div>
+        </div>
+
+        <div>
+            <a href="update?num=${qnaVO.num}">수정</a>
         </div>
 
         <button class="btn btn-primary" type="button" onclick="location='./list'">목록</button>

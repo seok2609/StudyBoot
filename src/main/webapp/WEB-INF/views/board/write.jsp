@@ -15,6 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <c:import url="../temp/boot.jsp"></c:import>
+<script defer type="text/javascript" src="/js/fileManager.js"></script>
 </head>
 <body>
 <section class="container-fluid col-lg-6 mt-5">
@@ -39,14 +40,14 @@
 			  <!-- <input type="text" name="contents" placeholder="내용을 입력하세요." id="contents"> -->
 			</div>
 			
-<!-- 			<div class="mb-3">
+ 			<div class="mb-3">
 			
 			</div>
 			<div class="mb-3">
-				<button type="button">FileAdd</button>
-			</div> -->
+				<button type="button" id="fileAdd">파일추가</button>
+			</div> 
 			
- 			<div class="mb-3">
+ 			<!-- <div class="mb-3">
 			  <label for="formGroupExampleInput" class="form-label">file</label>
 			  <input type="file" name="files">
 			</div>	
@@ -54,10 +55,10 @@
 			<div class="mb-3">
 			  <label for="formGroupExampleInput" class="form-label">file</label>
 			  <input type="file" name="files">
-			</div>
+			</div> -->
 				
 			<div>
-				<button type="submit" class="btn btn-primary">write</button>
+				<button class="btn btn-primary">write</button>
 			</div>	
 		
 		</form>
@@ -73,21 +74,10 @@
 <!-- 부트스트랩 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script type="text/javascript">
-	$('#contents').summernote({
-		height : 350,
-		toolbar: [
-		    ['style', ['style']],
-		    ['font', ['bold', 'italic', 'underline', 'clear']],
-		    ['fontname', ['fontname']],
-		    ['color', ['color']],
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']],
-		    ['table', ['table']],
-		    ['insert', ['link', 'picture', 'hr']],
-		    ['view', ['fullscreen', 'codeview']],
-		    ['help', ['help']]
-		  ]
-	});
-</script>
+    $('#contents').summernote({
+        tabsize: 4,
+        height: 250
+      });
+	</script>
 </body>
 </html>
