@@ -59,6 +59,14 @@
 			<div>
 				<button class="btn btn-danger">Update</button>
 			</div>
+
+			<div>
+				<button class="btn btn-primary" onclick="location='/'">홈으로</button>
+			</div>
+
+			<div>
+				<button class="btn btn-primary" onclick="location='./list'">리스트</button>
+			</div>
 		</form>
 		</div>
 	</div>

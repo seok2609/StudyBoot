@@ -14,13 +14,14 @@ $("#fileAdd").click(function(){
         $("#fileAddResult").append(r);
         count++;
     }else {
-        alert("최대 5개만 가능")
+        alert("최대 5개만 가능합니다.")
     }
 
 
     
 });
 
+//수정페이지에서 X버튼을 누르면 삭제하는 <div>의 js
 $("#fileAddResult").on("click", ".del", function(){
     $(this).parent().remove();
     count--;
@@ -30,7 +31,7 @@ $("#fileAddResult").on("click", ".del", function(){
 /// 글 수정시 첨부파일 삭제
 $(".deleteFile").click(function(){
     //DB, HDD에 파일 삭제
-    let check = confirm("삭제 됩니다.. 복구 불가");
+    let check = confirm("삭제가 되면 복구가 불가능합니다.");
 
     if(check){
         //post

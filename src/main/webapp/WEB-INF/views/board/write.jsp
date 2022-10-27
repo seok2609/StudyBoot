@@ -40,9 +40,10 @@
 			  <!-- <input type="text" name="contents" placeholder="내용을 입력하세요." id="contents"> -->
 			</div>
 			
- 			<div class="mb-3">
+ 			<div class="mb-3" id="fileAddResult">
 			
 			</div>
+			
 			<div class="mb-3">
 				<button type="button" id="fileAdd">파일추가</button>
 			</div> 
