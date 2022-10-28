@@ -23,29 +23,23 @@
 	<h1>글쓰기</h1>
 	
 	<div>
-	<form:form modelAttribute="qnaVO" action="add" method="post" enctype="multipart/form-data">
-		
+	
+		<form action="add" method="post" enctype="multipart/form-data">
 			
 			<div class="mb-3">
 				<label for="formGroupExampleInput" class="form-label">작성자</label>
-				<form:input path="writer" cssClass="form-control"/>
-				<!-- <input type="text" class="form-control" name="writer" placeholder="작성자를 입력하세요."> -->
-				<form:errors path="writer"></form:errors>
+				<input type="text" class="form-control" name="writer" placeholder="작성자를 입력하세요.">
 			</div>
 	
 			<div class="mb-3">
 			  <label for="formGroupExampleInput" class="form-label">제목</label>
-			  <form:input path="title" cssClass="form-control"/>
-			  <!-- <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요."> -->
-			  <form:errors path="title"></form:errors>
+			  <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요.">
 			</div>
 			
 			<div class="mb-3">
 			  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-			  <form:textarea path="contents" cssClass="form-control" id="contents"/>
-			  <!-- <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용을 입력하세요."></textarea> -->
+			  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용을 입력하세요."></textarea>
 			  <!-- <input type="text" name="contents" placeholder="내용을 입력하세요." id="contents"> -->
-			  <form:errors path="contents"></form:errors>
 			</div>
 			
  			<div class="mb-3" id="fileAddResult">
@@ -53,7 +47,7 @@
 			</div>
 			
 			<div class="mb-3">
-				<button type="submit" id="fileAdd">파일추가</button>
+				<button type="button" id="fileAdd">파일추가</button>
 			</div> 
 			
  			<!-- <div class="mb-3">
@@ -70,7 +64,7 @@
 				<button class="btn btn-primary">write</button>
 			</div>	
 		
-		</form:form>
+		</form>
 	</div>
 	
 	<div style="margin-top: 10px;">

@@ -3,12 +3,16 @@ package com.js.home.board.qna;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +30,11 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+//	@ModelAttribute("board")
+//	public String getBoard() {
+//		return "qna";
+//	}
 	
 	@GetMapping(value = "list")
 	public ModelAndView getQnaList(Pager pager) throws Exception{
@@ -57,15 +66,21 @@ public class QnaController {
 	
 	
 	@GetMapping(value = "add")
-	public String setQnaAdd() throws Exception{
+	public String setQnaAdd(@ModelAttribute QnaVO qnaVO) throws Exception{
 		
 		return "board/write";
 	}
 	
 	@PostMapping(value = "add")
-	public ModelAndView setQnaAdd(QnaVO qnaVO, RedirectAttributes redirectAttributes) throws Exception{
+	public ModelAndView setQnaAdd(@Valid QnaVO qnaVO, BindingResult bindingResult ,RedirectAttributes redirectAttributes) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
+		
+		if(bindingResult.hasErrors()) {
+			log.info("==========에러발생==========");
+			mv.setViewName("board/write");
+			return mv;
+		}
 		
 		int result = qnaService.setQnaAdd(qnaVO);
 		
@@ -73,23 +88,29 @@ public class QnaController {
 //		mv.addObject("result", result);
 		mv.setViewName("redirect:./list");
 		
-		if(result == 1) {
-			log.info("Result : {}", result);
-		}else {
-			log.info("실패");
-		}
-		
 		return mv;
 	}
 	
 	@GetMapping(value = "update")
+	public String setQnaUpdate(Model model, QnaVO qnaVO) throws Exception{
+		
+		qnaVO = qnaService.getQnaDetail(qnaVO);
+		
+		model.addAttribute("qnaVO", qnaVO);
+		
+		return "board/update";
+	}
+	
+	@PostMapping(value = "update")
 	public ModelAndView setQnaUpdate(QnaVO qnaVO) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("board/update");
+		mv.setViewName("redirect:./detail?num="+qnaVO.getNum());
+//		mv.setViewName("board/update");
 		
-		qnaVO = qnaService.getQnaDetail(qnaVO);
+//		qnaVO = qnaService.getQnaDetail(qnaVO);
+		int result = qnaService.setQnaUpdate(qnaVO);
 		
 		mv.addObject("qnaVO", qnaVO);
 		

@@ -69,6 +69,9 @@ public class QnaService {
 		return result; //qnaMapper.setQnaAdd(qnaVO);
 	}
 	
+	public int setQnaUpdate(QnaVO qnaVO) throws Exception{
+		return qnaMapper.setQnaUpdate(qnaVO);
+	}
 	
 	public QnaFileVO getQnaFileDetail(QnaFileVO qnaFileVO) throws Exception{
 		

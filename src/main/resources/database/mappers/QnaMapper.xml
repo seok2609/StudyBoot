@@ -45,9 +45,14 @@
 		INSERT INTO QNA VALUES (#{num}, #{writer}, #{title}, #{contents}, 0, SYSDATE(), 0, 0, 0)
 	</insert>
 	
+	<update id="setQnaUpdate" parameterType="QnaVO">
+		UPDATE QNA SET TITLE = #{title}, WRITER = #{writer}, CONTENTS = #{contents} WHERE NUM = #{num}
+	</update>
+	
 	<insert id="setQnaFileAdd" parameterType="QnaFileVO">
 		INSERT INTO QNAFILES VALUES (NULL, #{num}, #{fileName}, #{oriName})
 	</insert>
+	
 	
 	<select id="getQnaFileDetail" resultType="QnaFileVO">
 		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum}

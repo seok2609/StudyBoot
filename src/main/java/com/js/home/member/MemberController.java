@@ -4,10 +4,14 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -58,7 +62,9 @@ public class MemberController {
 	
 	
 	@GetMapping(value = "add")
-	public String setMemberJoin() throws Exception{
+	public String setMemberJoinGet(@ModelAttribute MemberVO memberVO) throws Exception{
+//		MemberVO memberVO = new MemberVO();
+//		model.addAttribute(memberVO);
 		
 		log.info("=========== MemberController에서 회원가입 GET실행 ==========");
 		
@@ -67,22 +73,22 @@ public class MemberController {
 	
 	
 	@PostMapping(value = "add")
-	public String setMemberJoin(MemberVO memberVO) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView setMemberJoinPost(@Valid MemberVO memberVO, BindingResult bindingResult, ModelAndView mv) throws Exception{
 		
 		log.info("=========== MemberController에서 회원가입 POST실행 ==========");
 		
-		int result = memberService.setMemberJoin(memberVO);
-		
-		if(result==1) {
-			log.info("MemberController : 회원가입 성공! " );
-		}else {
-			log.info("MemberController : 회원가입 실패!");
+		if(bindingResult.hasErrors()) {
+			//검증에 실패하면 회원가입하는 jsp로 이동 foward
+			log.info("==========검증 에러 발생==========");
+			mv.setViewName("member/add");
+			return mv;
 		}
 		
+		//int result = memberService.setMemberJoin(memberVO);
 		
-			
-		return "redirect:./login";
+		
+		mv.setViewName("redirect:../");
+		return mv;
 	}
 	
 	@GetMapping(value = "idCheck")

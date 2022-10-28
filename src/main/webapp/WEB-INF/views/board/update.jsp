@@ -24,21 +24,22 @@
 			<input type="hidden" name="num" value="${qnaVO.num}">
 
 			<div class="mb-3">
-			  <label for="title" class="form-label">Title</label>
+			  <label for="title" class="form-label">제목</label>
 			  	<input type="text" value="${qnaVO.title}" name="title" class="form-control" id="title" placeholder="제목">
 			</div>
 
 			<div class="mb-3">
-			  <label for="writer" class="form-label">Writer</label>
+			  <label for="writer" class="form-label">작성자</label>
 			  	<input type="text" value="${qnaVO.writer}" name="writer" class="form-control" id="writer" placeholder="작성자">
 			</div>
 
 			<div class="mb-3">
-			  <label for="contents" class="form-label">Contents</label>
+			  <label for="contents" class="form-label">내용</label>
 			  <textarea class="form-control" name="contents" id="contents"></textarea>
 			</div>
 			
-			<div class="mb-3" id="fileAddResult">
+			<input type="text" value="${qnaVO.qnaFileVOs.size()}"> 
+			<div class="mb-3" id="fileAddResult" data-file-size="${qnaVO.qnaFileVOs.size()}">
 
 				<c:forEach items="${qnaVO.qnaFileVOs}" var="qnaFileVO">
 
@@ -56,8 +57,8 @@
 			</div>
 
 			
-			<div>
-				<button class="btn btn-danger">Update</button>
+			<div style="float:right">
+				<button class="btn btn-danger">수정완료</button>
 			</div>
 
 			<div>
@@ -79,6 +80,8 @@
       });
     
     $('#contents').summernote('code', '${vo.contents}')
+
+	// setCount(${qnaVO.qnaFileVOs.size()});
     
 	</script>
 

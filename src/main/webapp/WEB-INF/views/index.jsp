@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,8 @@
 </head>
 <body>
 	<h1>이나은 팬클럽</h1>
+	<h1><spring:message code="hi" var="h"></spring:message></h1>
+	<h1><spring:message code="test" text="code가 없을때 출력되는 메세지"></spring:message></h1>
 	
 	<c:if test="${empty sessionScope.member}">
 		<a href="./member/login">로그인</a>
@@ -19,7 +22,9 @@
 	</c:if>
 	
 	<c:if test ="${not empty sessionScope.member}">
-		<h3>${sessionScope.member.name}님 어서와용!</h3>
+		<h3><spring:message code="welcome" arguments="${member.name}"></spring:message></h3>
+		<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
+		<%-- argumentSeparator="," => arguments="${member.id},${member.name}"에서 ","를 구분점으로 삼아서 id,name따로 따로 출력시킴 --%>
 		<a href="./member/logout">로그아웃</a>
 	
 	</c:if>
@@ -52,6 +57,12 @@
 	<div class="test">
 
 	</div>
+	
+	<h1>${h}</h1>
+	<h1>${h}</h1>
+	<h1>${h}</h1>
+	<h1>${h}</h1>
+	<h1>${h}</h1>
 
 </body>
 </html>
