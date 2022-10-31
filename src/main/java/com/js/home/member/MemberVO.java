@@ -18,6 +18,7 @@ public class MemberVO {
 
 	@NotBlank(message="ID는 필수입니다.")
 	private String id;
+//	private String idCheck;
 	@NotBlank
 //	@Size(max=10, min=8)
 	private String pw;

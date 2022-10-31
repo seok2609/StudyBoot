@@ -1,6 +1,7 @@
 package com.js.home.member;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -77,17 +79,20 @@ public class MemberController {
 		
 		log.info("=========== MemberController에서 회원가입 POST실행 ==========");
 		
-		if(bindingResult.hasErrors()) {
-			//검증에 실패하면 회원가입하는 jsp로 이동 foward
-			log.info("==========검증 에러 발생==========");
-			mv.setViewName("member/add");
-			return mv;
-		}
+//		if(bindingResult.hasErrors()) {		//이 코드는 Annotation만 검증하는 코드 - @Valid
+//			//검증에 실패하면 회원가입하는 jsp로 이동 foward
+//			log.info("==========검증 에러 발생==========");
+//			mv.setViewName("member/add");
+//			return mv;
+//		}
 		
 		boolean check = memberService.getMemberError(memberVO, bindingResult);
 		if(check) {
 			log.info("==========검증 에러 발생==========");
 			mv.setViewName("member/add");
+			//===================================================
+			List<FieldError> fr = bindingResult.getFieldErrors();			//어디서 에러가 발생했는지 알 수 있는 코드
+			
 			return mv;
 		}
 		
