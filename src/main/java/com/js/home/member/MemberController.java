@@ -93,6 +93,17 @@ public class MemberController {
 			//===================================================
 			List<FieldError> fr = bindingResult.getFieldErrors();			//어디서 에러가 발생했는지 알 수 있는 코드
 			
+			for(FieldError fieldError:fr) {
+				log.info("FieldError => {} ", fieldError);
+				log.info("Field => {} ",fieldError.getField());
+				log.info("Message => {} ", fieldError.getRejectedValue());
+				log.info("Default => {} " , fieldError.getDefaultMessage());
+				log.info("Code => {} ", fieldError.getCode());
+				mv.addObject(fieldError.getField(), fieldError.getDefaultMessage());
+				log.info("==================================================================");
+				
+			}
+			
 			return mv;
 		}
 		

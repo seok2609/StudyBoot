@@ -10,7 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <c:import url="../temp/boot.jsp"></c:import>
-<!-- <script defer src="/js/memberAdd.js"></script> -->
+<script defer src="/js/memberAdd.js"></script>
 <script defer src="/js/util.js"></script>
 </head>
 <body>
@@ -51,7 +51,9 @@ integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1
 		    <form:input path="name" cssClass="form-control" id="inputName"/>
 		    <!-- <input type="text" class="form-control" id="inputName" name="name" placeholder="이름을 입력하세요"> -->
 		    <form:errors path="name"></form:errors>
-			<span id="nameHelp"></span>
+			<span id="nameHelp">
+				${name}
+			</span>
 		  </div>
 		  
 		  

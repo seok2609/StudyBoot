@@ -47,27 +47,33 @@ let results = [false, false, false, false, false];
 //id Check
 $("#inputID").blur(function(){
     let result = nullCheck(($("#inputID").val()));
+    const id = ($("#inputID").val());
     // let result = nullCheck(($("#inputID").val(), $("#idHelp"), "ID입력은"));
     console.log("result : ", result);
     results[0] = result;
 
-    if(result){
-        $("#idHelp").html("정상");
-    }else{
-        $("#idHelp").html("ID는 필수입니다")
-    }
+    // if(result){
+    //     $("#idHelp").html("정상");
+    // }else{
+    //     $("#idHelp").html("ID는 필수입니다")
+    // }
 
     //단 id가 비어있지 않을때
-    $.get("./idCheck?id="+id, function(data){
-        console.log("data : ", data);
-        if(data == '0'){
-            $("#idHelp").html("사용가능한 ID 입니다 .");
-            results[0] = result;
-        }else{
-            $("#idHelp").html("이미 사용중인 ID 입니다. ");
-            results[0] = reuslt;
-        }
-    })
+    if(result){
+        
+        $.get("./idCheck?id="+id, function(data){
+            console.log("data : ", data);
+            if(data == '0'){
+                $("#idHelp").html("사용가능한 ID 입니다 .");
+                results[0] = true;
+            }else{
+                $("#idHelp").html("이미 사용중인 ID 입니다. ");
+                results[0] = reuslt;
+            }
+        })
+    }else{
+        $("#idHelp").html("ID는 필수입니다");
+    }
 });
 
 // pw Check
