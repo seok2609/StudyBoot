@@ -84,6 +84,13 @@ public class MemberController {
 			return mv;
 		}
 		
+		boolean check = memberService.getMemberError(memberVO, bindingResult);
+		if(check) {
+			log.info("==========검증 에러 발생==========");
+			mv.setViewName("member/add");
+			return mv;
+		}
+		
 		//int result = memberService.setMemberJoin(memberVO);
 		
 		

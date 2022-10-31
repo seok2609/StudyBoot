@@ -19,7 +19,6 @@ public class MemberVO {
 	@NotBlank(message="ID는 필수입니다.")
 	private String id;
 	@NotBlank
-	@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*\\\\W)(?=\\\\S+$).{6,12}")
 //	@Size(max=10, min=8)
 	private String pw;
 	private String pwCheck;
