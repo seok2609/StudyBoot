@@ -36,24 +36,24 @@ public class MemberController {
 		return "member/login";
 	}
 	
-	@PostMapping(value = "login")
-	public ModelAndView getMemberLogin(MemberVO memberVO, HttpServletRequest request, HttpSession session) throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-		log.info("MemberController : 로그인 실행!");
-		
-		memberVO = memberService.getMemberLogin(memberVO);
-		session = request.getSession();
-		session.setAttribute("member", memberVO);
-		
-		mv.addObject("member", memberVO);
-		
-		mv.setViewName("redirect:../");
-		
-		return mv;
-		
-	}
+//	@PostMapping(value = "login")
+//	public ModelAndView getMemberLogin(MemberVO memberVO, HttpServletRequest request, HttpSession session) throws Exception{
+//		
+//		ModelAndView mv = new ModelAndView();
+//		
+//		log.info("MemberController : 로그인 실행!");
+//		
+//		memberVO = memberService.getMemberLogin(memberVO);
+//		session = request.getSession();
+//		session.setAttribute("member", memberVO);
+//		
+//		mv.addObject("member", memberVO);
+//		
+//		mv.setViewName("redirect:../");
+//		
+//		return mv;
+//		
+//	}
 	
 	@GetMapping(value = "logout")
 	public String getLotOut(HttpSession session) throws Exception{
