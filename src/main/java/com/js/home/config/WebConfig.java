@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer{
 	@Value("${app.upload.base}") //spEL
 	private String filePath;
 	
-	@Value("${app.url.path}")
+	@Value("${app.url.path}")	//"file/**"
 	private String urlPath;
 	
 	@Override
