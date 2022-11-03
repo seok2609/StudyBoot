@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,22 @@
 	<h1><spring:message code="hi" var="h"></spring:message></h1>
 	<h1><spring:message code="test" text="code가 없을때 출력되는 메세지"></spring:message></h1>
 	
-	<c:if test="${empty sessionScope.member}">
+	
+	<!-- 로그인 성공 -->
+	<sec:authorize access="isAuthenticated()">	<!-- 인증(Authenticated)이 되었냐 안되었냐 is로 시작하면 true/false -->
+												<!-- isAuthenticated() : 인증(로그인)이 되었다 -->
+		<h3><spring:message code="welcome" arguments="${member.name}"></spring:message></h3>
+		<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
+		<a href="./member/logout">로그아웃</a>
+	</sec:authorize>
+	
+	<!-- 로그인 전 -->
+	<sec:authorize access="!isAuthenticated()">	<!-- !를 써서 로그인이 안됐을떄로 표현 -->
+		<a href="./member/add">회원가입</a>
+		<a href="./member/login">로그인</a>
+	</sec:authorize>
+	
+	<%-- <c:if test="${empty sessionScope.member}">
 		<a href="./member/login">로그인</a>
 		<a href="./member/add">회원가입</a>
 	</c:if>
@@ -24,13 +40,12 @@
 	<c:if test ="${not empty sessionScope.member}">
 		<h3><spring:message code="welcome" arguments="${member.name}"></spring:message></h3>
 		<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
-		<%-- argumentSeparator="," => arguments="${member.id},${member.name}"에서 ","를 구분점으로 삼아서 id,name따로 따로 출력시킴 --%>
+		argumentSeparator="," => arguments="${member.id},${member.name}"에서 ","를 구분점으로 삼아서 id,name따로 따로 출력시킴
 		<a href="./member/logout">로그아웃</a>
 	
-	</c:if>
+	</c:if> --%>
 
-	<!-- <a href="./member/add">회원가입</a>
-	<a href="./member/login">로그인</a> -->
+
 
 	<img src="./images/naeun.jpg">
 	<a href="./qna/list">QnA</a>

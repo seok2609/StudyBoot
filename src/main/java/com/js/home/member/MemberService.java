@@ -12,10 +12,11 @@ public class MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	public MemberVO getMemberLogin(MemberVO memberVO) throws Exception{
-		
-		return memberMapper.getMemberLogin(memberVO);
-	}
+	//로그인 처리는 Security에서 처리 함
+//	public MemberVO getMemberLogin(MemberVO memberVO) throws Exception{
+//		
+//		return memberMapper.getMemberLogin(memberVO);
+//	}
 	
 	//사용자 정의 검증 메서드
 	public boolean getMemberError(MemberVO memberVO, BindingResult bindingResult) throws Exception{

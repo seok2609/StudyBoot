@@ -86,6 +86,7 @@ public class MemberVO implements UserDetails{
 	}
 
 	@Override
+	//리소스에 접근하는 대상의 비밀번호
 	public boolean isCredentialsNonExpired() {
 		// 비밀번호 만료 여부
 		// true : 만료 안됨
@@ -99,6 +100,6 @@ public class MemberVO implements UserDetails{
 		// true : 계정 활성화 (계정 사용 가능)
 		// false : 계정 비활성화 (계쩡 사용 불가, 로그인 불가)
 		
-		return false;
+		return true;
 	}
 }

@@ -10,16 +10,16 @@
 		INSERT INTO MEMBER VALUES (#{id}, #{pw}, #{name}, #{email}, 1) 
 	</insert>
 	
-	<select id="getMemberLogin" parameterType="MemberVO" resultMap="getMemberLoginResult">
+	<select id="getMemberLogin" parameterType="String" resultMap="getMemberLoginResult">
 		SELECT * FROM 
 		MEMBER M
 			LEFT JOIN
-		MEMBER_ROLE MR
+		MEMBER_ROLE1 MR
 			ON M.ID = MR.ID
 			LEFT JOIN 
 		ROLE R 
 			ON MR.NUM = R.NUM
-		WHERE M.ID = #{id} AND M.PW = #{pw}
+		WHERE M.ID = #{username}
 	</select>
 
 	<resultMap type="MemberVO" id="getMemberLoginResult">
@@ -37,7 +37,7 @@
 
 	<insert id="setMemberRole" parameterType="MemberVO">
 		<!-- INSERT INTO MEMBER_ROLE VALUES (#{id}, 3) -->
-		INSERT INTO MEMBER_ROLE VALUES (#{id},
+		INSERT INTO MEMBER_ROLE1 VALUES (#{id},
 				(SELECT NUM FROM ROLE WHERE ROLENAME = 'MEMBER')
 			)
 	</insert>

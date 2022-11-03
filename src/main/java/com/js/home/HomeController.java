@@ -1,17 +1,23 @@
 package com.js.home;
 
+import java.util.Enumeration;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.js.home.board.qna.QnaMapper;
 import com.js.home.board.qna.QnaVO;
+import com.js.home.member.MemberVO;
 import com.js.home.util.Pager;
 
 @Controller
@@ -48,8 +54,27 @@ public class HomeController {
 
 	
 	@GetMapping("/")
-	public String home() throws Exception{
+	public String home(HttpSession session) throws Exception{
 		log.info("====================================");
+		
+		//세션에 저장되있는 키값을 가져온다(get)
+		//Spring Security에 있는 세션
+		Enumeration<String> en = session.getAttributeNames();
+		
+		//반복문
+		while(en.hasMoreElements()) { //Elements가 더 있냐 
+			
+			String key = en.nextElement();
+			log.info("Key ====> {} ", key);
+			
+		}
+		
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		if(context != null) {
+			
+//			log.info("Context ::::::: {} ", ((MemberVO)context.getAuthentication().getPrincipal()).getId());
+			log.info("Context =======>>>>>>>> {} ", context);
+		}
 		
 		log.info("message : {} ", message);
 		log.info("default : {} ", app);
