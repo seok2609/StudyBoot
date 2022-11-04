@@ -26,6 +26,8 @@ public class MemberSecurityService  implements UserDetailsService{
 		memberVO = memberMapper.getMemberLogin(username);
 		log.info("MemberVO : {} ", memberVO);
 		
+		//여기선 아직 비밀번호가 맞는지 아닌지 판단이 불가능하다.
+		
 		
 		return memberVO;
 	}

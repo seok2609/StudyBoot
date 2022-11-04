@@ -1,5 +1,6 @@
 package com.js.home.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,9 +10,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.js.home.member.sercurity.LoginFail;
+import com.js.home.member.sercurity.LoginSuccess;
+import com.js.home.member.sercurity.LogoutCustom;
+import com.js.home.member.sercurity.LogoutSuccessCustom;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	
+	@Autowired
+	private LoginSuccess loginSuccess;
+	@Autowired
+	private LoginFail loginFail;
+	@Autowired
+	private LogoutCustom logoutCustom;
+	@Autowired
+	private LogoutSuccessCustom logoutSuccessCustom;
 	
 	@Bean
 	//public을 선언하면 default로 바꾸라는 메세지 출력
@@ -55,12 +70,16 @@ public class SecurityConfig {
 				.passwordParameter("pw")	//패스워드에 해당하는 파라미터 이름은 password이지만, 개발자가 다른이름으로 파라미터를 사용할 때
 				.usernameParameter("id")	//아이디에 해당하는 파라미터 이름은 username이지만, 개발자가 다른이름으로 파라미터를 사용할 때
 				.defaultSuccessUrl("/")		//인증에 성공할 경우 요청할 URL
-				.failureUrl("/member/login")	//로그인 인증에 실패 했을경우 "/member/login"으로 보냄
+				.successHandler(loginSuccess)	//로그인에 성공할 경우 loginSuccess 클래스로 보냄
+				.failureHandler(loginFail)
+				//.failureUrl("/member/login?error=true&&message=LoginFail")	//로그인 인증에 실패 했을경우 "/member/login"으로 보냄
 					.permitAll()
 					.and()
 				.logout()
 					.logoutUrl("/member/logout")
-					.logoutSuccessUrl("/")
+					//.logoutSuccessUrl("/")
+					.logoutSuccessHandler(logoutSuccessCustom)
+					.addLogoutHandler(logoutCustom)
 					.invalidateHttpSession(true)	//세션을 지울거면 true 아니면 false
 					.deleteCookies("JESSIONID")
 					.permitAll();
@@ -74,5 +93,5 @@ public class SecurityConfig {
 		
 		return new BCryptPasswordEncoder();
 	}
-
+	
 }

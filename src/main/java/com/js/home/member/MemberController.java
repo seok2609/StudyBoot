@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,29 +32,31 @@ public class MemberController {
 	
 	
 	@GetMapping(value = "login")
-	public String getMemberLogin() throws Exception{
+//	public String getMemberLogin(@RequestParam(required=false) boolean error, String message) throws Exception{
+	public String getMemberLogin(@RequestParam(defaultValue = "false", required=false) boolean error, String message, Model model) throws Exception{
+		
+		if(error) {
+			model.addAttribute("msg", "ID또는 PW를 확인하세요");
+		}
+		
+		//Controller에서 받아서 jsp로 다시 받아도됨
 		
 		return "member/login";
 	}
 	
-//	@PostMapping(value = "login")
-//	public ModelAndView getMemberLogin(MemberVO memberVO, HttpServletRequest request, HttpSession session) throws Exception{
-//		
-//		ModelAndView mv = new ModelAndView();
-//		
-//		log.info("MemberController : 로그인 실행!");
-//		
-//		memberVO = memberService.getMemberLogin(memberVO);
-//		session = request.getSession();
-//		session.setAttribute("member", memberVO);
-//		
-//		mv.addObject("member", memberVO);
-//		
-//		mv.setViewName("redirect:../");
-//		
-//		return mv;
-//		
-//	}
+	@PostMapping(value = "login")
+	public ModelAndView getMemberLogin() throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		log.info("MemberController : 로그인 실행!");
+		
+		
+		mv.setViewName("member/login");
+		
+		return mv;
+		
+	}
 	
 	@GetMapping(value = "logout")
 	public String getLogOut(HttpSession session) throws Exception{

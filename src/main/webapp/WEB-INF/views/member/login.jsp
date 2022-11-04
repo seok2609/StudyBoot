@@ -10,24 +10,38 @@
 		 rel="stylesheet" 
 		 integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" 
 		 crossorigin="anonymous">
+<script type="text/javascript">
+	history.replaceState({}, null, location.pathname);
+</script>
 </head>
 <body>
 	
 	<section class="container-fluid col-lg-4 mt-5">
 	
 		<h1>로그인을 하세요</h1>
+		
+		<div>
+			<h3>${param.error}</h3>
+			<h3>${param.message}</h3>
+			<h3>${msg}</h3>
+		</div>
 	  
 		  <form action="login" method="post">
 		  
 			  <div class="mb-3">
 			    <label for="userName" class="form-label">ID</label>
-			    <input type="text" name="id" class="form-control" id="id" placeholder="ID를 입력하세요">
+			    <input type="text" name="id" value="${cookie.userId.value}" class="form-control" id="id" placeholder="ID를 입력하세요">
 			  </div>
 			  
 			  
 			  <div class="mb-3">
 			    <label for="password" class="form-label">PW</label>
 			    <input type="password" name="pw"  class="form-control" id="pw" placeholder="비밀번호를 입력하세요">
+			  </div>
+			  
+			  <div class="mb-3">
+			    <label for="password" class="form-label">ID저장</label>
+			    <input type="checkbox" name="rememberId" id="rememberId">
 			  </div>
 			  
 			  <h4 id="d1">로그인 할래??</h4>
@@ -45,5 +59,6 @@
 			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 			  crossorigin="anonymous">
 </script>    
+
 </body>
 </html>
