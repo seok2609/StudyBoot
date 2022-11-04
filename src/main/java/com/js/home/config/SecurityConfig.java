@@ -59,6 +59,10 @@ public class SecurityConfig {
 					.permitAll()
 					.and()
 				.logout()
+					.logoutUrl("/member/logout")
+					.logoutSuccessUrl("/")
+					.invalidateHttpSession(true)	//세션을 지울거면 true 아니면 false
+					.deleteCookies("JESSIONID")
 					.permitAll();
 		
 		return httpSecurity.build();

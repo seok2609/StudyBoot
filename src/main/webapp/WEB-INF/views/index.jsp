@@ -17,20 +17,37 @@
 	<h1><spring:message code="hi" var="h"></spring:message></h1>
 	<h1><spring:message code="test" text="code가 없을때 출력되는 메세지"></spring:message></h1>
 	
+	<div>
+		<!-- 로그인 성공 -->
+		<sec:authorize access="isAuthenticated()">	<!-- 인증(Authenticated)이 되었냐 안되었냐 is로 시작하면 true/false -->
+													<!-- isAuthenticated() : 인증(로그인)이 되었다 -->
+			<sec:authentication property="Principal" var="member"/>
+			<h3><spring:message code="welcome" arguments="${member.name}"></spring:message></h3>
+			<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
+			<a href="./member/logout">로그아웃</a>
+			
+			<!-- 로그인한 회원 등급이 ADMIN이면 admin 태그가 뜨고 회원등급이 admin이 아니거나 비회원이면 안보임 -->
+			<sec:authorize access="hasRole('ADMIN')">
+				<a href="/admin">admin</a>
+			</sec:authorize>
+			
+			<sec:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
+				<a href="/manager">manager</a>
+			</sec:authorize>
+			
+			<sec:authorize access="hasAnyRole('ADMIN', 'MANAGER', 'MEMBER')">
+				<a href="/member/myPage">myPage</a>
+			</sec:authorize>
+		</sec:authorize>
+		
+		<!-- 로그인 전 -->
+		<sec:authorize access="!isAuthenticated()">	<!-- !를 써서 로그인이 안됐을떄로 표현 -->
+			<a href="./member/add">회원가입</a>
+			<a href="./member/login">로그인</a>
+		</sec:authorize>
+		
 	
-	<!-- 로그인 성공 -->
-	<sec:authorize access="isAuthenticated()">	<!-- 인증(Authenticated)이 되었냐 안되었냐 is로 시작하면 true/false -->
-												<!-- isAuthenticated() : 인증(로그인)이 되었다 -->
-		<h3><spring:message code="welcome" arguments="${member.name}"></spring:message></h3>
-		<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
-		<a href="./member/logout">로그아웃</a>
-	</sec:authorize>
-	
-	<!-- 로그인 전 -->
-	<sec:authorize access="!isAuthenticated()">	<!-- !를 써서 로그인이 안됐을떄로 표현 -->
-		<a href="./member/add">회원가입</a>
-		<a href="./member/login">로그인</a>
-	</sec:authorize>
+	</div>
 	
 	<%-- <c:if test="${empty sessionScope.member}">
 		<a href="./member/login">로그인</a>

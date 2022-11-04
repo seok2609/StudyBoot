@@ -56,7 +56,8 @@ public class MemberController {
 //	}
 	
 	@GetMapping(value = "logout")
-	public String getLotOut(HttpSession session) throws Exception{
+	public String getLogOut(HttpSession session) throws Exception{
+		log.info("============내가 만든 쿠키~~~================");
 		session.invalidate();
 		
 		return "redirect:../";
@@ -144,6 +145,13 @@ public class MemberController {
 		
 		return memberVO;
 	}
+	
+	@GetMapping(value = "myPage")
+	public String getMyPage() throws Exception{
+		
+		return "member/myPage";
+	}
+
 	
 	
 	
