@@ -10,15 +10,26 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class MemberSocailService extends DefaultOAuth2UserService{@Override
+public class MemberSocailService extends DefaultOAuth2UserService{
+	
+	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 	
 		log.info("==========소셜 로그인 시도========");
 		log.info("UserRequest {} ", userRequest);
+		log.info("AccessTocken : {} ", userRequest.getAccessToken());
 		log.info("ClientRegistration : {} ", userRequest.getClientRegistration());
-		// TODO Auto-generated method stub
+		
+		OAuth2User oAuth2User = super.loadUser(userRequest);
+		log.info("========================사용자 정보=======================");
+		log.info("Name : {} ", oAuth2User.getName());
+		log.info("Attributes : {} ", oAuth2User.getAuthorities());
+		log.info("auth {} ", oAuth2User.getAuthorities());
+		
 		return null;
 	}
+
+	
 	
 	
 
