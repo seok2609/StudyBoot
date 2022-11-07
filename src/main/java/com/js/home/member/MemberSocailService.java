@@ -15,6 +15,7 @@ public class MemberSocailService extends DefaultOAuth2UserService{@Override
 	
 		log.info("==========소셜 로그인 시도========");
 		log.info("UserRequest {} ", userRequest);
+		log.info("ClientRegistration : {} ", userRequest.getClientRegistration());
 		// TODO Auto-generated method stub
 		return null;
 	}
