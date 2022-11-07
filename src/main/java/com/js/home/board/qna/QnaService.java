@@ -39,7 +39,7 @@ public class QnaService {
 	}
 	
 	
-	@Transactional(rollbackFor = Exception.class)	//이 setQnaAdd를 실행하다가 Exception이 발생하면 rollback을 시키는 어노테이션
+//	@Transactional(rollbackFor = Exception.class)	//이 setQnaAdd를 실행하다가 Exception이 발생하면 rollback을 시키는 어노테이션
 	public int setQnaAdd(QnaVO qnaVO) throws Exception{
 		int result = qnaMapper.setQnaAdd(qnaVO);
 		

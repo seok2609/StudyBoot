@@ -31,6 +31,16 @@ public class QnaController {
 	private QnaService qnaService;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
+	
+	@GetMapping("hack")
+	@ResponseBody
+	public int hack(QnaVO qnaVO) throws Exception{
+		
+		qnaService.setQnaAdd(qnaVO);
+		
+		return 1;
+	}
+	
 //	@ModelAttribute("board")
 //	public String getBoard() {
 //		return "qna";

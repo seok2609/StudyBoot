@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.js.home.member.MemberSecurityService;
+import com.js.home.member.MemberSocailService;
 import com.js.home.member.sercurity.LoginFail;
 import com.js.home.member.sercurity.LoginSuccess;
 import com.js.home.member.sercurity.LogoutCustom;
@@ -38,6 +39,8 @@ public class SecurityConfig {
 	private LogoutSuccessCustom logoutSuccessCustom;
 	@Autowired
 	private MemberSecurityService memberSecurityService;
+	@Autowired
+	private MemberSocailService memberSocailService;
 	
 	@Bean
 	//public을 선언하면 default로 바꾸라는 메세지 출력
@@ -59,8 +62,8 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain (HttpSecurity httpSecurity) throws Exception{
 		
 		httpSecurity
-//					.csrf()							//csrf를 적용하면 tocken을 줌
-//					.disable()
+					.csrf()							//csrf를 적용하면 tocken을 줌
+					.disable()
 					.cors()
 					.configurationSource(this.configurationSource())
 					.and()
@@ -101,7 +104,11 @@ public class SecurityConfig {
 					.tokenValiditySeconds(300)				//로그인 유지시간, 초단위
 					.key("rememberMe")						// 인증받은 사용자의 정보로 Token 생성시 필요, 필수값 (키 값은 자기 맘대로)
 					.userDetailsService(memberSecurityService)		//인증 절차를 실행할 UserDetailService, 필수
-					.authenticationSuccessHandler(loginSuccess);	//Login 성공
+					.authenticationSuccessHandler(loginSuccess)	//Login 성공
+					.and()
+				.oauth2Login()								//Social Login 설정
+					.userInfoEndpoint()
+					.userService(memberSocailService);
 					
 		
 		return httpSecurity.build();
@@ -118,7 +125,7 @@ public class SecurityConfig {
 	CorsConfigurationSource configurationSource() {
 		CorsConfiguration configuration  = new CorsConfiguration();
 //		configuration.setAllowedOrigins(Arrays.asList(1,2,3));	// Array.aslit()괄호안에 숫자를 넣으면 => List<Integer>
-		configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500"));	//여기 써져있는 IP의 접속을 허락하겠다.
+		configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500", "*"));	//여기 써져있는 IP의 접속을 허락하겠다.
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
 		
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

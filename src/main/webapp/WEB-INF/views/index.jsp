@@ -24,8 +24,12 @@
 			<sec:authentication property="Principal" var="member"/>
 			<h3><spring:message code="welcome" arguments="${member.name}"></spring:message></h3>
 			<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
-			<a href="./member/logout">로그아웃</a>
 			
+			<form action="./member/logout" method="post" id="outForm">
+				<sec:csrfInput/>
+				<a href="./member/logout">로그아웃</a>
+				<!-- <button>로그아웃</button> -->
+			</form>
 			<!-- 로그인한 회원 등급이 ADMIN이면 admin 태그가 뜨고 회원등급이 admin이 아니거나 비회원이면 안보임 -->
 			<sec:authorize access="hasRole('ADMIN')">
 				<a href="/admin">admin</a>
@@ -42,8 +46,9 @@
 		
 		<!-- 로그인 전 -->
 		<sec:authorize access="!isAuthenticated()">	<!-- !를 써서 로그인이 안됐을떄로 표현 -->
-			<a href="./member/add">회원가입</a>
 			<a href="./member/login">로그인</a>
+			<a href="/oauth2/authorization/kakao">KaKao Login</a>
+			<a href="./member/add">회원가입</a>
 		</sec:authorize>
 		
 	
@@ -95,6 +100,12 @@
 	<h1>${h}</h1>
 	<h1>${h}</h1>
 	<h1>${h}</h1>
+	
+	<script type="text/javascript">
+		$("#logout").click(function(){
+			$("outForm").submit();
+		});
+	</script>
 
 </body>
 </html>
