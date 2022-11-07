@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@ integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1
 
 	<form:form modelAttribute="memberVO" action="add" method="post">
 
-	
+			<sec:csrfInput/>
 		  <div class="mb-3">
 			  <label for="inputID" class="form-label">아이디</label>
 		  <form:input path="id" cssClass="form-control" id="inputID"/>

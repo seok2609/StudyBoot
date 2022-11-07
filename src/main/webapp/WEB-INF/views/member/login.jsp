@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,9 @@
 			<h3>${msg}</h3>
 		</div>
 	  
+		  <!-- <form action="http://192.168.1.2:81/member/login" method="post"> -->
 		  <form action="login" method="post">
+		  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		  
 			  <div class="mb-3">
 			    <label for="userName" class="form-label">ID</label>
@@ -42,6 +45,11 @@
 			  <div class="mb-3">
 			    <label for="password" class="form-label">ID저장</label>
 			    <input type="checkbox" name="rememberId" id="rememberId">
+			  </div>
+			  
+			  <div class="mb-3">
+			    <label for="password" class="form-label">자동로그인</label>
+			    <input type="checkbox" name="rememberMe" class="form-check-input" id="exampleCheck2">
 			  </div>
 			  
 			  <h4 id="d1">로그인 할래??</h4>

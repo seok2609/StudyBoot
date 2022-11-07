@@ -1,15 +1,24 @@
 package com.js.home.config;
 
+import java.util.Arrays;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.js.home.member.MemberSecurityService;
 import com.js.home.member.sercurity.LoginFail;
 import com.js.home.member.sercurity.LoginSuccess;
 import com.js.home.member.sercurity.LogoutCustom;
@@ -27,6 +36,8 @@ public class SecurityConfig {
 	private LogoutCustom logoutCustom;
 	@Autowired
 	private LogoutSuccessCustom logoutSuccessCustom;
+	@Autowired
+	private MemberSecurityService memberSecurityService;
 	
 	@Bean
 	//public을 선언하면 default로 바꾸라는 메세지 출력
@@ -48,10 +59,11 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain (HttpSecurity httpSecurity) throws Exception{
 		
 		httpSecurity
+//					.csrf()							//csrf를 적용하면 tocken을 줌
+//					.disable()
 					.cors()
+					.configurationSource(this.configurationSource())
 					.and()
-					.csrf()
-					.disable()
 				.authorizeRequests()	//인가 요청
 //					.antMatchers("/").permitAll()	//인덱스("/")페이지는 누구한테나 접근을 허용하겠다
 					.antMatchers("/login").permitAll()
@@ -59,7 +71,7 @@ public class SecurityConfig {
 					.antMatchers("/admin").hasRole("ADMIN")
 					.antMatchers("/manager").hasRole("MANAGER")
 					.antMatchers("/qna/list").permitAll()
-					.antMatchers("/qna/**").hasRole("MEMBER")	//Role이 MEMBER인 사람만 qna로 시작하는 모든 경로 접근을 허용하겠다.
+					//.antMatchers("/qna/**").hasRole("MEMBER")	//Role이 MEMBER인 사람만 qna로 시작하는 모든 경로 접근을 허용하겠다.
 //					.anyRequest().authenticated()	//위에 입력한 antMatchers를 제외하고는
 					.anyRequest().permitAll()
 					.and()
@@ -82,7 +94,15 @@ public class SecurityConfig {
 					.addLogoutHandler(logoutCustom)
 					.invalidateHttpSession(true)	//세션을 지울거면 true 아니면 false
 					.deleteCookies("JESSIONID")
-					.permitAll();
+					.permitAll()
+					.and()
+				.rememberMe()	//RememberMe 설정
+					.rememberMeParameter("rememberMe")		//파라미터명
+					.tokenValiditySeconds(300)				//로그인 유지시간, 초단위
+					.key("rememberMe")						// 인증받은 사용자의 정보로 Token 생성시 필요, 필수값 (키 값은 자기 맘대로)
+					.userDetailsService(memberSecurityService)		//인증 절차를 실행할 UserDetailService, 필수
+					.authenticationSuccessHandler(loginSuccess);	//Login 성공
+					
 		
 		return httpSecurity.build();
 	}
@@ -93,5 +113,21 @@ public class SecurityConfig {
 		
 		return new BCryptPasswordEncoder();
 	}
+	
+
+	CorsConfigurationSource configurationSource() {
+		CorsConfiguration configuration  = new CorsConfiguration();
+//		configuration.setAllowedOrigins(Arrays.asList(1,2,3));	// Array.aslit()괄호안에 숫자를 넣으면 => List<Integer>
+		configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500"));	//여기 써져있는 IP의 접속을 허락하겠다.
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
+		
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);	//위에 setAllowedOrigins에 쓴 ip주소에서 들어오는건 모두 허락함
+		
+		
+		
+			return source;
+		
+	};
 	
 }
